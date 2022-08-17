@@ -13,24 +13,36 @@ const ExpenseForm = () => {
 
     const titleChangeHandler = (event) => {
         console.log(event);
-        setUserInput({
-            ...userInput,
-            enteredTitle: event.target.value
-        });
+        // setUserInput({
+        //     ...userInput,
+        //     enteredTitle: event.target.value
+        // });
+        // this is bcoz react schedules state update maybe someone has already updated but you worked on
+        // old state as it was not updated in userInput state yet
+        setUserInput((prevState) => {
+            return {
+                    ...prevState,
+                    enteredTitle: event.target.value
+                }
+        })
     }
     const amountChangeHandler = (event) => {
         console.log(event);
-        setUserInput({
-            ...userInput,
-            enteredAmount: event.target.value
-        });
+        setUserInput((prevState) => {
+            return {
+                    ...prevState,
+                    enteredAmount: event.target.value
+                }
+        })
     }
     const dateChangeHandler = (event) => {
         console.log(event);
-        setUserInput({
-            ...userInput,
-            enteredDate: event.target.value
-        });
+        setUserInput((prevState) => {
+            return {
+                    ...prevState,
+                    enteredDate: event.target.value
+                }
+        })
     }
     return (
         <form>
