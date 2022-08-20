@@ -29,7 +29,7 @@ const ExpenseForm = (props) => {
         setUserInput((prevState) => {
             return {
                     ...prevState,
-                    amount: event.target.value
+                    amount: +event.target.value
                 }
         })
     }
