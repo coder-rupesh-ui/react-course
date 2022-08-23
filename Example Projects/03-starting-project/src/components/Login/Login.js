@@ -39,17 +39,20 @@ const Login = (props) => {
     isValid: null
   });
 
+  const {isValid: isEmailValid} = emailState;
+  const {isValid: isPassValid} = passState;
+
   useEffect(() => {
     const timer = setTimeout(() => {
       setFormIsValid(
-        emailState.isValid && passState.isValid
+        isEmailValid && isPassValid
       );
     }, 500);
     //this is cleanup code, it before execution of use effect except 1st time, and before destruction also it runs
     return () => {
       clearTimeout(timer);
     }
-  }, [emailState, passState])
+  }, [isEmailValid, isPassValid])
 
   const emailChangeHandler = (event) => {
     dispatchEmail({type: 'USER_INPUT', val: event.target.value})
