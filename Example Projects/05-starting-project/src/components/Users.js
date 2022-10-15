@@ -20,6 +20,11 @@ class Users extends Component {
       }
     });
   }
+  componentDidMount() {
+    if(this.props.users.length === 0) {
+      throw new Error('No User Found');
+    }
+  }
   render() {
     const usersList = (
       <ul>
