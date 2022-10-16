@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 
 import MoviesList from './components/MoviesList';
 import './App.css';
@@ -8,12 +8,16 @@ function App() {
   const [isLoading, setIsLoading] = useState(false);
   const [error, setError] = useState(null);
 
+  useEffect(() => {
+    fetchMovies();
+  }, []);
+
   async function fetchMovies() {
     setIsLoading(true);
     setError(null);
     try {
-      const res = await fetch('http://swapi.dev/api/film/'); // wrong api just to imitate failure
-      // const res = await fetch('http://swapi.dev/api/films/');
+      // const res = await fetch('http://swapi.dev/api/film/'); // wrong api just to imitate failure
+      const res = await fetch('http://swapi.dev/api/films/');
       if(!res.ok) {
         throw new Error('Something went wrong');
       }
